@@ -1,0 +1,27 @@
+<section class="news-feed">
+    @if (feedStatus === feedStatuses.Loading) {
+    <div class="loading">
+        <div class="spinner">
+            Loading Feed...
+        </div>
+    </div>
+    }
+    @else if (feedStatus === feedStatuses.Error) {
+    <div class="error">
+        <div class="error-message">
+            <div class="error-message-title font-bold">Error Loading Feed</div>
+            <div class="error-message-body">
+                <p>There was an error loading the feed. Please try again later.</p>
+
+                <p>{{feedFetchError}}</p>
+            </div>
+        </div>
+    </div>
+    }
+    @else {
+    <!-- show hackernews cards -->
+    @for (item of hackerNews; track $index) {
+    <app-hackernews-card [hackerNews]="item"></app-hackernews-card>
+    }
+    }
+</section>

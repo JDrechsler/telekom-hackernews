@@ -1,0 +1,9 @@
+<div class="hackernews-card bg-white shadow-md rounded p-4 mb-4">
+    <div class="grid grid-flow-col justify-start items-center gap-1">
+        <div class="card-published">{{hackerNews.created_at | date:'dd-MM-yyyy'}}</div>
+        <div class="card-author">by {{hackerNews.author | titlecase}}</div>
+    </div>
+
+    <a class="card-title text-xl font-bold mb-2 hover:text-brand-magenta"
+        [href]="hackerNews.url">{{hackerNews.title}}</a>
+</div>
