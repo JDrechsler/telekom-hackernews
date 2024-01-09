@@ -1,6 +1,10 @@
 # Telekom Hacker News
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
+## Local Setup
+Run `npm install` to install all dependencies.
+
+## Hosted Version
+The application is also hosted on github and can be accessed via [https://jdrechsler.github.io/telekom-hackernews/](https://jdrechsler.github.io/telekom-hackernews/)
 
 ## Development server
 
