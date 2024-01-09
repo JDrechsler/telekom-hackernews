@@ -23,6 +23,11 @@ export class HackernewsService {
     return json ?? [];
   }
 
+  /**
+   * Updates the Hacker News response by fetching the latest articles based on the search string and page number.
+   * @param searchStr The search string to filter the articles.
+   * @param page The page number of the articles to fetch.
+   */
   async updateHackerNewsRes(searchStr: string = '', page: number = 0) {
     try {
       this.storeService.setFeedStatus(FeedStatus.Loading)
