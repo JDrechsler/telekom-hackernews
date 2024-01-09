@@ -1,10 +1,14 @@
 {
   "name": "telekom-hackernews",
+  "author": {
+    "name": "Johannes Drechsler"
+  },
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build-gh": "ng build --base-href https://jdrechsler.github.io/telekom-hackernews/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
