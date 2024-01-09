@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HackernewsCardComponent } from './hackernews-card.component';
 
 describe('HackernewsCardComponent', () => {

@@ -10,5 +10,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './hackernews-card.component.scss'
 })
 export class HackernewsCardComponent {
-  @Input() hackerNews!: HackerNews;
+  @Input() hackerNews: HackerNews = {
+    title: '',
+    url: '',
+    author: '',
+    created_at: '',
+    updated_at: '',
+  };
 }
