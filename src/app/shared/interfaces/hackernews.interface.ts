@@ -8,7 +8,6 @@ export interface HackerNews {
 
 export interface HackerNewsResponse {
     hits: HackerNews[];
-    hitsPerPage: number;
     nbPages: number;
     page: number;
 }

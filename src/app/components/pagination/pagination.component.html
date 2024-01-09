@@ -1,0 +1,18 @@
+<div class="grid grid-flow-col justify-between items-center select-none">
+    <div class="grid grid-flow-col gap-10 justify-evenly">
+        <button (click)="firstPage()" [disabled]="isFirstPage()" class="py-5 hover:text-brand-magenta">First</button>
+        <button (click)="prevPage()" [disabled]="isFirstPage()"
+            class="text-center py-5 hover:text-brand-magenta">Previous</button>
+    </div>
+
+    <div><span class="hidden sm:inline-block sm:mr-1">Page:</span>{{storeService.hackerNewsRes().page + 1}} /
+        {{storeService.hackerNewsRes().nbPages}}
+    </div>
+    <div class="grid grid-flow-col gap-10 justify-evenly">
+
+        <button (click)="nextPage()" [disabled]="isLastPage()"
+            class="text-center py-5 hover:text-brand-magenta">Next</button>
+        <button (click)="lastPage()" [disabled]="isLastPage()" class="py-5 hover:text-brand-magenta">Last</button>
+    </div>
+
+</div>

@@ -1,27 +1,42 @@
 <section class="news-feed">
-    @if (feedStatus === feedStatuses.Loading) {
+    @if (storeService.feedStatus() === feedStatuses.Loading) {
     <div class="loading">
         <div class="spinner">
             Loading Feed...
+            <img id="loadingSpinner"
+                class="w-10 z-50 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+                src="/assets/loading.svg">
         </div>
     </div>
     }
-    @else if (feedStatus === feedStatuses.Error) {
+    @else if (storeService.feedStatus() === feedStatuses.Error) {
     <div class="error">
         <div class="error-message">
             <div class="error-message-title font-bold">Error Loading Feed</div>
             <div class="error-message-body">
                 <p>There was an error loading the feed. Please try again later.</p>
-
-                <p>{{feedFetchError}}</p>
+                <p>{{storeService.feedFetchError()}}</p>
             </div>
         </div>
     </div>
     }
     @else {
     <!-- show hackernews cards -->
-    @for (item of hackerNews; track $index) {
-    <app-hackernews-card [hackerNews]="item"></app-hackernews-card>
+    <div class="grid grid-flow-row gap-5">
+        @for (item of storeService.hackerNews(); track $index) {
+        <app-hackernews-card [hackerNews]="item"></app-hackernews-card>
+        }
+    </div>
+    @if (storeService.hackerNews().length) {
+    <!-- show pagination -->
+    <app-pagination></app-pagination>
+    } @else {
+    <!-- show no results -->
+    <div>There are no news matching the search query: "{{storeService.searchQuery()}}". Please try a different search
+        query.</div>
+    <button (click)="freshSearch()"
+        class="border px-4 py-2 rounded-md border hover:border-brand-magenta hover:text-brand-magenta">New
+        search</button>
     }
     }
 </section>

@@ -1,34 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { HackernewsService } from '../../shared/services/hackernews.service';
-import { HackerNews } from '../../shared/interfaces/hackernews.interface';
 import { HackernewsCardComponent } from "../hackernews-card/hackernews-card.component";
 import { FeedStatus } from '../../shared/enums/feed-status.enum';
+import { SearchComponent } from "../search/search.component";
+import { StoreService } from '../../shared/services/store.service';
+import { PaginationComponent } from "../pagination/pagination.component";
 
 @Component({
     selector: 'app-home',
     standalone: true,
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss',
-    imports: [HackernewsCardComponent]
+    imports: [HackernewsCardComponent, SearchComponent, PaginationComponent]
 })
 export class HomeComponent implements OnInit{
 
-  hackerNews: HackerNews[] = [];
-  feedStatus = FeedStatus.Loading
   feedStatuses = FeedStatus;
-  feedFetchError: any
 
-  constructor(private hackernewsService: HackernewsService) {}
+  constructor(private hackernewsService: HackernewsService, public storeService: StoreService) {}
   async ngOnInit(): Promise<void> {
-    try {
-      const res = await this.hackernewsService.getAllHackerNews();
-      this.hackerNews = res.hits;
-      console.log(this.hackerNews)
-      this.feedStatus = FeedStatus.Success;
-    } catch (error) {
-      console.error(error)
-      this.feedStatus = FeedStatus.Error;
-      this.feedFetchError = error;
-    }
+    await this.freshSearch()
+  }
+
+  async freshSearch() {
+    this.storeService.setSearchQuery('')
+    await this.hackernewsService.updateHackerNewsRes('');
   }
 }

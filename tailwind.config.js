@@ -8,7 +8,10 @@ module.exports = {
       colors: {
         brand: {
           magenta: "#E20074",
-        }
+        },
+      },
+      gridTemplateColumns: {
+        'header': '1fr auto 1fr',
       }
     },
   },
