@@ -1,4 +1,20 @@
 # Telekom Hacker News
+The latest news from the Hacker News platform. Built with Angular, it offers a seamless user experience on mobile and desktop.
+
+## Tech Stack
+- Angular 17
+- TypeScript 5
+- TailwindCSS
+- Angular Signals
+
+## Features
+- Story Feed: View the latest news from Hacker News
+- Search Bar: Search for news by title, author using HN api on submit or debounced after delay
+- Pagination: Switch through the available pages (first, previous, next, last) using server-side Pagination. Only the necessary subset of data for the current page is retrieved from the server/api. This reduces the amount of data sent to the client, improving initial load times.
+- State Management: Angular Signals
+- Error Handling: Error handling for all API calls
+- Loading State: Loading state for all API calls, visual feedback for the user
+- Responsiveness: Responsive design for mobile and desktop  
 
 ## Local Setup
 Run `npm install` to install all dependencies.
